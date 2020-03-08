@@ -18,35 +18,113 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
             aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
-            <a class="navbar-brand" href="#">Hidden brand</a>
+            <a class="navbar-brand" href="#">LP Solver</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="card">
+        <div class="card text-center mt-4">
             <div class="card-header">
-                Linear Program Solver
+                Options
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="card-body text-left">
+                <div class="form-group">
+                    <label for="method">Method</label>
+                    <select class="form-control">
+                        <option>Simplex</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card text-center mt-4">
+            <div class="card-header">
+                Linear Program Options
+            </div>
+            <div class="card-body text-left">
+                <form id="lpOptionsForm">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="variablesNum">Total Variables</label>
+                            <input type="number" class="form-control" name="variablesNum" id="variablesNum" value="2">
+                        </div>
+                        <div class="form-group col">
+                            <label for="constraintsNum">Total Constraints</label>
+                            <input type="number" class="form-control" name="constraintsNum" id="constraintsNum"
+                                value="2">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                </form>
+            </div>
+        </div>
+        <div class="card text-center mt-4">
+            <div class="card-header">
+                Linear Program
+            </div>
+            <div class="card-body text-left">
+                <form id="plForm">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="variablesNum">Objective Function</label>
+                            <div class="row" id="objectiveFunctionVariables">
+                                <div class="form-group col">
+                                    <label class="col-form-label">Z = </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Subject to constraints</label>
+                        </div>
+                    </div>
+                    <button type="submit" id="solveBtn" class="btn btn-primary">Solve</button>
+                </form>
             </div>
         </div>
     </div>
+
+    <template id="variableTemplate">
+        <div class="form-group col row template-variable">
+            <input type="number" class="form-control col">
+            <label class="col col-form-label">X{Number}</label>
+        </div>
+    </template>
+
+    <template id="constraintTemplate">
+        <div class="form-row template-constraint">
+            <div class="form-group col">
+                <div class="row">
+                    <div class="form-group col before-variables-label">
+                        <label class="col-form-label"></label>
+                    </div>
+                    <div class="form-group col row">
+                        <select class="form-control col">
+                            <option>=</option>
+                            <option>=></option>
+                        </select>
+                        <label class="col col-form-label"></label>
+                    </div>
+                    <div class="form-group col row">
+                        <input type="number" class="form-control col">
+                        <label class="col col-form-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -59,6 +137,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
